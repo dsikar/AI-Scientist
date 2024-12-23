@@ -1,32 +1,13 @@
+import argparse
+import json
+import os
+import time
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import datasets, transforms
-import time
-import matplotlib.pyplot as plt
-import os
-
-def save_visualization(original, compressed, epoch, batch_idx, save_dir='visualizations'):
-    os.makedirs(save_dir, exist_ok=True)
-    
-    plt.figure(figsize=(10, 5))
-    
-    # Original
-    plt.subplot(121)
-    plt.imshow(original.reshape(28, 28).numpy(), cmap='gray')
-    plt.title('Original')
-    
-    # Compressed and reconstructed
-    plt.subplot(122)
-    # Inverse DCT of compressed
-    reconstructed = torch.zeros(28, 28)
-    reconstructed[:16, :16] = compressed[:256].reshape(16, 16)
-    reconstructed = torch.fft.idctn(reconstructed, norm='ortho')
-    plt.imshow(reconstructed.numpy(), cmap='gray')
-    plt.title('Reconstructed from DCT')
-    
-    plt.savefig(f'{save_dir}/comparison_epoch{epoch}_batch{batch_idx}.png')
-    plt.close()
+from dataclasses import dataclass
 
 class CompressedNet(nn.Module):
     def __init__(self):
