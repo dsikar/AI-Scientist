@@ -8,8 +8,10 @@ import numpy as np
 # Define the datasets you're working with
 datasets = ["mnist"]  # Update as per your datasets
 
-INFO = {"mnist":
-            {"size": 60000}
+INFO = {"mnist": 
+            {"size": 60000,
+             "final_info_dict": {"config": [{"batch_size": 128}]}
+            }
         }
 
 # CREATE LEGEND -- ADD RUNS HERE THAT WILL BE PLOTTED
