@@ -57,10 +57,6 @@ def train(net, trainloader, epochs=10):
         start_time = time.time()
         
         for i, (inputs, labels) in enumerate(trainloader):
-            if i == 0:  # Save visualization for first batch of each epoch
-                original_img = trainloader.dataset.dataset[i][0]  # Get original image
-                save_visualization(original_img, inputs[0], epoch, i)
-                
             optimizer.zero_grad()
             outputs = net(inputs)
             loss = criterion(outputs, labels)
