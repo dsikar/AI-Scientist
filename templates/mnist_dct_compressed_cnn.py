@@ -86,21 +86,116 @@ def test(net, testloader):
     
     return 100. * correct / total
 
-# Setup data
-transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.Normalize((0.5,), (0.5,))
-])
+@dataclass
+class Config:
+    # data
+    data_path: str = './data'
+    # training
+    batch_size: int = 64
+    learning_rate: float = 0.01
+    momentum: float = 0.9
+    epochs: int = 10
+    # system
+    device: str = 'cuda' if torch.cuda.is_available() else 'cpu'
+    num_workers: int = 2
+    # logging
+    log_interval: int = 100
+    # output
+    out_dir: str = 'run_0'
+    seed: int = 0
 
-trainset = CompressedDataset(datasets.MNIST('./data', train=True, download=True, transform=transform))
-trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
+def get_data_loaders(config):
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize((0.5,), (0.5,))
+    ])
 
-testset = CompressedDataset(datasets.MNIST('./data', train=False, transform=transform))
-testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=False)
+    trainset = CompressedDataset(datasets.MNIST(config.data_path, train=True, download=True, transform=transform))
+    trainloader = torch.utils.data.DataLoader(trainset, batch_size=config.batch_size, 
+                                            shuffle=True, num_workers=config.num_workers)
 
-# Train and test
-net = CompressedNet()
-print("Starting training...")
-train(net, trainloader)
-accuracy = test(net, testloader)
-print(f'Test accuracy: {accuracy:.2f}%')
+    testset = CompressedDataset(datasets.MNIST(config.data_path, train=False, transform=transform))
+    testloader = torch.utils.data.DataLoader(testset, batch_size=config.batch_size, 
+                                           shuffle=False, num_workers=config.num_workers)
+    
+    return trainloader, testloader
+
+def main():
+    parser = argparse.ArgumentParser(description="Train DCT Compressed CNN on MNIST")
+    parser.add_argument("--data_path", type=str, default="./data", help="Path to save/load the dataset")
+    parser.add_argument("--batch_size", type=int, default=64, help="Batch size")
+    parser.add_argument("--learning_rate", type=float, default=0.01, help="Learning rate")
+    parser.add_argument("--epochs", type=int, default=10, help="Number of epochs to train")
+    parser.add_argument("--out_dir", type=str, default="run_0", help="Output directory")
+    args = parser.parse_args()
+
+    os.makedirs(args.out_dir, exist_ok=True)
+    print(f"Outputs will be saved to {args.out_dir}")
+
+    # Define number of seeds
+    num_seeds = 3  # Run experiment with 3 different seeds for statistical significance
+    all_results = {}
+    final_infos = {}
+    final_info_list = []
+
+    for seed_offset in range(num_seeds):
+        config = Config(
+            data_path=args.data_path,
+            batch_size=args.batch_size,
+            learning_rate=args.learning_rate,
+            epochs=args.epochs,
+            out_dir=args.out_dir,
+            seed=seed_offset
+        )
+
+        # Set random seeds
+        torch.manual_seed(config.seed)
+        np.random.seed(config.seed)
+        
+        print(f"Starting training with seed {seed_offset}")
+        start_time = time.time()
+        
+        trainloader, testloader = get_data_loaders(config)
+        net = CompressedNet()
+        
+        print("Starting training...")
+        train(net, trainloader, config.epochs)
+        accuracy = test(net, testloader)
+        total_time = time.time() - start_time
+        
+        print(f'Test accuracy for seed {seed_offset}: {accuracy:.2f}%')
+        
+        # Store results
+        final_info = {
+            "test_acc": accuracy,
+            "total_train_time": total_time,
+            "config": vars(config)
+        }
+        final_info_list.append(final_info)
+        
+        key_prefix = f"seed_{seed_offset}"
+        all_results[f"{key_prefix}_final_info"] = final_info
+
+    # Aggregate results over seeds
+    accuracies = [info["test_acc"] for info in final_info_list]
+    mean_accuracy = np.mean(accuracies)
+    stderr_accuracy = np.std(accuracies) / np.sqrt(len(accuracies))
+    
+    final_infos = {
+        "means": {"test_acc_mean": mean_accuracy},
+        "stderrs": {"test_acc_stderr": stderr_accuracy},
+        "final_info_dict": {"test_acc": accuracies}
+    }
+
+    # Save results
+    with open(os.path.join(args.out_dir, "final_info.json"), "w") as f:
+        json.dump(final_infos, f, indent=2)
+
+    with open(os.path.join(args.out_dir, "all_results.npy"), "wb") as f:
+        np.save(f, all_results)
+
+    print(f"All results saved to {args.out_dir}")
+    print(f"Mean accuracy across {num_seeds} seeds: {mean_accuracy:.2f}% ± {stderr_accuracy:.2f}%")
+
+if __name__ == "__main__":
+    main()
