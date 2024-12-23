@@ -10,7 +10,8 @@ datasets = ["mnist"]  # Update as per your datasets
 
 INFO = {"mnist": 
             {"size": 60000,
-             "final_info_dict": {"config": [{"batch_size": 128}]}
+             "dataset": "mnist",
+             "batch_size": 64  # Updated based on actual config
             }
         }
 
@@ -52,7 +53,7 @@ for i, run in enumerate(runs):
         run_info = {}
         for dataset in datasets:
 
-            iterations_per_epoch = INFO[dataset]["size"] // final_info[dataset]["final_info_dict"]["config"][0]["batch_size"]
+            iterations_per_epoch = INFO[dataset]["size"] // INFO[dataset]["batch_size"]
             # Initialize lists to collect data across seeds
             all_train_iters = []
             all_train_losses = []
