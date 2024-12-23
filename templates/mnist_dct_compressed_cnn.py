@@ -35,11 +35,34 @@ class CompressedDataset(torch.utils.data.Dataset):
     def __len__(self):
         return len(self.dataset)
         
+    def dct2d(self, x):
+        # Implement 2D DCT using FFT
+        X1 = torch.fft.fft(x, dim=0)
+        X2 = torch.fft.fft(x, dim=1)
+        
+        # Create frequency basis
+        n1 = x.shape[0]
+        n2 = x.shape[1]
+        k1 = torch.arange(n1).float()
+        k2 = torch.arange(n2).float()
+        
+        # Compute DCT weights
+        w1 = 2 * torch.exp(-1j * torch.pi * k1 / (2 * n1))
+        w2 = 2 * torch.exp(-1j * torch.pi * k2 / (2 * n2))
+        
+        # Apply weights
+        X1 = X1 * w1.unsqueeze(1)
+        X2 = X2 * w2
+        
+        # Take real part and normalize
+        dct = torch.real(X1 + X2) / (n1 * n2)**0.5
+        return dct
+
     def __getitem__(self, idx):
         image, label = self.dataset[idx]
         # Reshape and apply DCT
         image = image.view(28, 28)
-        dct = torch.fft.dctn(image, norm='ortho')
+        dct = self.dct2d(image)
         # Keep top 256 coefficients (16x16)
         mask = torch.zeros_like(dct)
         mask[:16, :16] = 1
