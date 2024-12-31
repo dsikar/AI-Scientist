@@ -41,7 +41,7 @@ def parse_arguments():
     return parser.parse_args()
 
 if __name__ == "__main__":
-    args = parse_args()
+    args = parse_arguments()
     
     # Create output directory
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
