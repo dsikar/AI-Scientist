@@ -1,0 +1,35 @@
+{
+    "Summary": "The paper compares two compression methods\u2014Discrete Cosine Transform (DCT) and Random Projections (RP)\u2014for neural network training on the MNIST dataset. It finds that RP significantly outperforms DCT in terms of accuracy, training time, and stability across different learning rates.",
+    "Strengths": [
+        "Addresses an important problem in deep learning: efficient data compression in resource-constrained environments.",
+        "Systematic empirical comparison with detailed analysis of gradient statistics and optimization trajectories.",
+        "Findings show that RP achieves higher accuracy, faster training, and better stability than DCT."
+    ],
+    "Weaknesses": [
+        "Experiments are limited to the MNIST dataset, raising questions about generalizability to more complex datasets and architectures.",
+        "Theoretical explanations for why RP performs better than DCT are insufficiently explored.",
+        "Some methodological details, such as the autoencoder aggregator and specific hyperparameters, lack clarity.",
+        "The paper does not explore other compression ratios or alternative projection methods, which could provide a more comprehensive understanding of the compression techniques."
+    ],
+    "Originality": 2,
+    "Quality": 2,
+    "Clarity": 2,
+    "Significance": 3,
+    "Questions": [
+        "Can the authors provide theoretical insights or intuitive explanations for why random projections create more favorable optimization landscapes?",
+        "How would the proposed methods perform on more complex datasets such as CIFAR-10 or ImageNet?",
+        "Could the authors elaborate on the choice and role of the autoencoder aggregator in their experiments?",
+        "Have the authors considered other compression ratios or alternative projection methods?"
+    ],
+    "Limitations": [
+        "The study is limited to the MNIST dataset, which might not generalize to more complex datasets or different neural network architectures.",
+        "The random projection matrix's memory requirements may scale with input dimensionality, which could be a limitation for very large datasets or inputs."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 2,
+    "Presentation": 2,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

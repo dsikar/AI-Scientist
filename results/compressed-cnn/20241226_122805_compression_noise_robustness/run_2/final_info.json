@@ -1,0 +1,51 @@
+{
+  "mnist": {
+    "means": {
+      "best_val_acc_mean": 39.77,
+      "clean_test_acc_mean": 39.77,
+      "noisy_test_acc_mean": 39.77,
+      "total_train_time_mean": 817.5519616603851
+    },
+    "stderrs": {
+      "best_val_acc_stderr": 0.0,
+      "clean_test_acc_stderr": 0.0,
+      "noisy_test_acc_stderr": 0.0,
+      "total_train_time_stderr": 0.0
+    },
+    "final_info_dict": {
+      "best_val_acc": [
+        39.77
+      ],
+      "clean_test_acc": [
+        39.77
+      ],
+      "noisy_test_acc": [
+        39.77
+      ],
+      "total_train_time": [
+        817.5519616603851
+      ],
+      "config": [
+        {
+          "data_path": "./data",
+          "dataset": "mnist",
+          "num_classes": 10,
+          "mask_size": 8,
+          "noise_sigma": 0.1,
+          "model": "compressed_net",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 30,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_2",
+          "seed": 0,
+          "compile_model": false
+        }
+      ]
+    }
+  }
+}

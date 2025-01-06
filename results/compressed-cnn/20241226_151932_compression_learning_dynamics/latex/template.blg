@@ -1,0 +1,64 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: template.aux
+The style file: iclr2024_conference.bst
+Database file #1: references.bib
+Repeated entry---line 53 of file references.bib
+ : @article{Horoi2021ExploringTG
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 69 of file references.bib
+ : @inproceedings{Hegde2007EfficientML
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 135 of file references.bib
+ : @article{Deng2020ModelCA
+ :                         ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in Bingham2001RandomPI
+Warning--empty booktitle in Gupta1999AnEP
+Warning--empty booktitle in Hegde2007EfficientML
+Warning--empty journal in Herrmann2022ChaoticDA
+Warning--empty journal in Horoi2021ExploringTG
+You've used 11 entries,
+            2773 wiz_defined-function locations,
+            667 strings with 7045 characters,
+and the built_in function-call counts, 5863 in all, are:
+= -- 500
+> -- 393
+< -- 6
++ -- 131
+- -- 120
+* -- 482
+:= -- 889
+add.period$ -- 33
+call.type$ -- 11
+change.case$ -- 73
+chr.to.int$ -- 11
+cite$ -- 27
+duplicate$ -- 262
+empty$ -- 445
+format.name$ -- 137
+if$ -- 1237
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 11
+newline$ -- 63
+num.names$ -- 44
+pop$ -- 152
+preamble$ -- 1
+purify$ -- 62
+quote$ -- 0
+skip$ -- 220
+stack$ -- 0
+substring$ -- 197
+swap$ -- 38
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 121
+warning$ -- 5
+while$ -- 45
+width$ -- 0
+write$ -- 142
+(There were 3 error messages)

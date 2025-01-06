@@ -1,0 +1,77 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azimi \& Pekcan(2020)Azimi and Pekcan]{azimi2020structural}
+Mohsen Azimi and Gokhan Pekcan.
+\newblock Structural health monitoring using extremely compressed data through
+  deep learning.
+\newblock \emph{Computer-Aided Civil and Infrastructure Engineering},
+  35\penalty0 (6):\penalty0 597--614, 2020.
+
+\bibitem[Bingham \& Mannila(2001)Bingham and Mannila]{Bingham2001RandomPI}
+Ella Bingham and H.~Mannila.
+\newblock Random projection in dimensionality reduction: applications to image
+  and text data.
+\newblock pp.\  245--250, 2001.
+
+\bibitem[Deng et~al.(2020)Deng, Li, Han, Shi, and Xie]{Deng2020ModelCA}
+By~Lei Deng, Guoqi Li, Song Han, Luping Shi, and Yuan Xie.
+\newblock Model compression and hardware acceleration for neural networks: A
+  comprehensive survey.
+\newblock \emph{Proceedings of the IEEE}, 108:\penalty0 485--532, 2020.
+
+\bibitem[Fort et~al.(2020)Fort, Dziugaite, Paul, Kharaghani, Roy, and
+  Ganguli]{Fort2020DeepLV}
+Stanislav Fort, G.~Dziugaite, Mansheej Paul, Sepideh Kharaghani, Daniel~M. Roy,
+  and S.~Ganguli.
+\newblock Deep learning versus kernel learning: an empirical study of loss
+  landscape geometry and the time evolution of the neural tangent kernel.
+\newblock \emph{ArXiv}, abs/2010.15110, 2020.
+
+\bibitem[Gupta \& Dasgupta(1999)Gupta and Dasgupta]{Gupta1999AnEP}
+Anupam Gupta and S.~Dasgupta.
+\newblock An elementary proof of the johnson-lindenstrauss lemma.
+\newblock 1999.
+
+\bibitem[Hegde et~al.(2007)Hegde, Davenport, Wakin, and
+  Baraniuk]{Hegde2007EfficientML}
+C.~Hegde, M.~Davenport, M.~Wakin, and Richard Baraniuk.
+\newblock Efficient machine learning using random projections.
+\newblock 2007.
+
+\bibitem[Herrmann et~al.(2022)Herrmann, Granz, and
+  Landgraf]{Herrmann2022ChaoticDA}
+Luis~M. Herrmann, Maximilian Granz, and Tim Landgraf.
+\newblock Chaotic dynamics are intrinsic to neural network training with sgd.
+\newblock 2022.
+
+\bibitem[Horoi et~al.(2021)Horoi, chun Huang, Rieck, Lajoie, Wolf, and
+  Krishnaswamy]{Horoi2021ExploringTG}
+Stefan Horoi, Je~chun Huang, Bastian~Alexander Rieck, Guillaume Lajoie, Guy
+  Wolf, and Smita Krishnaswamy.
+\newblock Exploring the geometry and topology of neural network loss
+  landscapes.
+\newblock pp.\  171--184, 2021.
+
+\bibitem[LeCun et~al.(1998)LeCun, Bottou, Bengio, and
+  Haffner]{LeCun1998GradientbasedLA}
+Yann LeCun, L.~Bottou, Yoshua Bengio, and P.~Haffner.
+\newblock Gradient-based learning applied to document recognition.
+\newblock \emph{Proc. IEEE}, 86:\penalty0 2278--2324, 1998.
+
+\bibitem[Li et~al.(2023)Li, Li, and Meng]{Li2023ModelCF}
+Zhuo Li, Hengyi Li, and Lin Meng.
+\newblock Model compression for deep neural networks: A survey.
+\newblock \emph{Comput.}, 12:\penalty0 60, 2023.
+
+\bibitem[Wang et~al.(2022)Wang, Qin, and Chen]{wang2022learning}
+Zhenzhen Wang, Minghai Qin, and Yen-Kuang Chen.
+\newblock Learning from the cnn-based compressed domain.
+\newblock In \emph{Proceedings of the IEEE/CVF Winter Conference on
+  Applications of Computer Vision}, pp.\  3582--3590, 2022.
+
+\end{thebibliography}

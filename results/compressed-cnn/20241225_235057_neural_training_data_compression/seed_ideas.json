@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "neural_training_data_compression",
+    "Title": "Investigating Data Compression Techniques for Neural Network Training: A Comparative Study of Information Preservation and Model Performance",
+    "Experiment": "Explore and evaluate different compression methods (DCT, Random Projection, Downsampling, Binary Mask) for reducing neural network training data storage requirements while maintaining model performance. The study begins with MNIST dataset compression using DCT transformation, followed by implementing and comparing alternative compression schemes. Key research questions include: (1) Compression efficiency and accuracy trade-offs across different methods, (2) Relationship between compression ratio and model performance, (3) Information theoretic analysis of compressed representations, (4) Potential for dataset reconstruction or identification from compressed forms. The experiment will measure compression ratios, model accuracy on compressed data versus original data, and analyze the information-theoretic properties of compressed representations. Additional investigation will explore the cryptographic implications of compressed data uniqueness and the possibility of dataset identification through compressed representations. This research aims to establish optimal compression strategies for reducing storage and bandwidth requirements in neural network training while maintaining model performance, with potential applications in efficient AI training and data privacy.",
+    "Interestingness": 9,
+    "Feasibility": 8,
+    "Novelty": 8
+  }
+]

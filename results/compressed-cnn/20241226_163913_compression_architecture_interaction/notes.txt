@@ -1,0 +1,45 @@
+# Title: Analyzing the Interaction Between Data Compression and Neural Network Width in Deep Learning
+# Experiment description: Modify CompressedNet to create width variants using channel multipliers [0.5x, 1x, 2x] applied to all conv layers. For each width variant: (1) Train with DCT compression ratios [0.1, 0.3, 0.5], (2) Track model performance metrics (accuracy, loss) and efficiency metrics (FLOPs, parameters), (3) Analyze feature quality through layer-wise activation statistics. Implementation requires: adding width multiplier parameter to CompressedNet, creating FLOP counting utility, extending training loop to handle width variants. Compare accuracy vs. computational cost trade-offs across different width-compression combinations to identify optimal configurations.
+## Run 0: Baseline
+Results: {'mnist': {'best_val_acc_mean': 95.58, 'test_acc_mean': 95.58, 'total_train_time_mean': 827.2352156639099}}
+Description: Baseline results.
+## Run 1: Reduced Width (0.5x) with High Compression (0.1)
+Results: {'mnist': {'best_val_acc_mean': 43.91, 'test_acc_mean': 43.91, 'total_train_time_mean': 669.6345808506012}}
+Description: First experiment combining reduced network width (0.5x multiplier) with high compression ratio (0.1). The significant drop in accuracy (51.67% decrease) suggests this configuration is too aggressive - the network has insufficient capacity to learn from the highly compressed input. Training time decreased by 19.1% compared to baseline, showing improved efficiency but at too great a cost to performance. The poor accuracy indicates we need to explore more moderate compression ratios while maintaining the reduced width.
+## Run 2: Reduced Width (0.5x) with Moderate Compression (0.3)
+Results: {'mnist': {'best_val_acc_mean': 94.6, 'test_acc_mean': 94.6, 'total_train_time_mean': 723.9968402385712}}
+Description: Second experiment maintaining the reduced network width (0.5x multiplier) but with a more moderate compression ratio (0.3). The results show a dramatic improvement in accuracy compared to Run 1, achieving 94.6% test accuracy - only 1% lower than the baseline. This suggests that 0.3 compression ratio provides sufficient information for the network to learn effectively, while the 0.5x width multiplier maintains good model efficiency with a 12.5% reduction in training time compared to baseline. This configuration appears to strike a good balance between model compression and performance.
+
+## Run 3: Reduced Width (0.5x) with Higher Compression (0.5)
+Results: {'mnist': {'best_val_acc_mean': 97.07, 'test_acc_mean': 97.07, 'total_train_time_mean': 797.0436344146729}}
+Description: Third experiment kept the reduced network width (0.5x multiplier) but increased the compression ratio to 0.5. Surprisingly, this configuration achieved the best results so far with 97.07% test accuracy, surpassing even the baseline (95.58%) by 1.49%. While the training time (797.04s) was longer than Run 2 (723.99s) due to processing more coefficients, it was still 3.6% faster than the baseline (827.24s). This suggests that with 0.5x width, a compression ratio of 0.5 provides an optimal balance - retaining enough information for improved learning while maintaining computational efficiency. The superior accuracy indicates that this compression level preserves important features while potentially acting as a beneficial form of regularization.
+
+## Run 4: Increased Width (2.0x) with Higher Compression (0.5)
+Results: {'mnist': {'best_val_acc_mean': 97.17, 'test_acc_mean': 97.17, 'total_train_time_mean': 1344.4017708301544}}
+Description: Fourth experiment tested a wider network (2.0x multiplier) while maintaining the successful compression ratio of 0.5. The results show a marginal improvement in accuracy to 97.17% compared to Run 3's 97.07%, but at a significant computational cost - training time increased by 68.7% to 1344.40s compared to Run 3's 797.04s. This suggests that while additional model capacity can slightly improve performance, the gains are minimal and come with substantial computational overhead. The results indicate that the 0.5x width configuration from Run 3 represents a more optimal trade-off between accuracy and efficiency, achieving nearly identical performance with much lower computational requirements.
+
+# Generated Plots Analysis
+
+## Training Loss Plot (train_loss_mnist_across_runs.png)
+This plot visualizes the training loss progression across all experimental runs. The x-axis shows training iterations while the y-axis displays the loss value. Each run is represented by a different colored line with a semi-transparent confidence interval band showing the standard error. Key observations:
+- The baseline (1.0x width, 0.3 comp) shows steady convergence
+- Run 1 (0.5x width, 0.1 comp) exhibits higher and more unstable loss, confirming the inadequate learning with extreme compression
+- Runs 3 and 4 (0.5x and 2.0x width with 0.5 comp) show the fastest and most stable convergence, supporting their superior test accuracy
+- The confidence bands are particularly tight for the successful configurations, indicating consistent learning across seeds
+
+## Validation Loss Plot (val_loss_mnist_across_runs.png)
+This figure tracks validation loss throughout training, providing insights into generalization performance. Notable patterns:
+- Run 1's high validation loss aligns with its poor test performance
+- Runs 3 and 4 maintain consistently low validation loss, with minimal gap to their training loss, suggesting good generalization
+- The baseline configuration shows slightly higher validation loss than Runs 3 and 4, matching its lower test accuracy
+- Confidence bands widen during early training but stabilize as models converge, indicating reliable final performance estimates
+
+## Test Accuracy Comparison (test_accuracy_mnist_across_runs.png)
+This bar plot provides a clear comparison of final test accuracy across all configurations:
+- Baseline achieves 95.58% accuracy
+- Run 1's poor performance (43.91%) is immediately apparent
+- Run 2 shows competitive performance (94.6%) despite reduced width
+- Runs 3 and 4 demonstrate superior performance (97.07% and 97.17%)
+- The minimal difference between Runs 3 and 4 (0.1%) is clearly visible, supporting the conclusion that the additional capacity of Run 4 provides diminishing returns
+
+These visualizations collectively support the conclusion that the 0.5x width with 0.5 compression ratio (Run 3) provides the optimal balance of accuracy and efficiency, with the wider network of Run 4 offering minimal gains at substantial computational cost.

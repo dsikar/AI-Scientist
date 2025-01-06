@@ -1,0 +1,34 @@
+{
+    "Summary": "The paper 'AdaptCompression: Dynamic Sample-Aware Data Compression for Efficient Deep Learning' proposes a novel framework, AdaptCompression, which dynamically adjusts data compression levels based on the importance of samples during training. The framework uses discrete cosine transform (DCT) coefficients and tracks per-sample loss values to apply more aggressive compression to well-learned samples and preserve higher fidelity for challenging examples. Experiments on the MNIST dataset demonstrate that this approach maintains model accuracy at 95.58% while reducing training time by 2.3%.",
+    "Strengths": [
+        "Addresses a significant and practical problem in deep learning related to computational and storage demands during training.",
+        "The proposed dynamic compression framework is novel and leverages the DCT-based compression in an innovative way to adjust the compression levels based on sample learning difficulty.",
+        "Initial experimental results on the MNIST dataset show that the approach can maintain accuracy while reducing training time."
+    ],
+    "Weaknesses": [
+        "The experimental validation is limited to the MNIST dataset, which is relatively simple and may not fully demonstrate the scalability and effectiveness of the approach on more complex datasets.",
+        "There is a lack of clarity and detail in the methodology, particularly regarding the implementation of the adaptive thresholding mechanism and the compression levels.",
+        "The potential computational overhead of tracking per-sample loss statistics and dynamically adjusting compression levels is not thoroughly addressed.",
+        "The paper does not explore the generalization of the approach to more complex architectures and datasets, limiting the assessment of its broader impact and applicability."
+    ],
+    "Originality": 3,
+    "Quality": 2,
+    "Clarity": 2,
+    "Significance": 2,
+    "Questions": [
+        "Can the authors provide more details on the implementation of the adaptive threshold mechanism and the computational overhead involved?",
+        "How does the approach perform on more complex datasets and architectures? Can the authors provide additional experimental results to demonstrate scalability?",
+        "What are the potential limitations and challenges in generalizing this approach to other types of data compression or other aspects of deep learning optimization?"
+    ],
+    "Limitations": [
+        "The paper primarily evaluates the approach on the MNIST dataset, which may not fully capture the challenges of more complex datasets.",
+        "The potential computational overhead and memory requirements for tracking per-sample statistics and dynamically adjusting compression levels are not thoroughly explored."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 2,
+    "Presentation": 2,
+    "Contribution": 2,
+    "Overall": 3,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

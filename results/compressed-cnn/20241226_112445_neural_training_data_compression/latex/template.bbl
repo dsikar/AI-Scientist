@@ -1,0 +1,53 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azimi \& Pekcan(2020)Azimi and Pekcan]{azimi2020structural}
+Mohsen Azimi and Gokhan Pekcan.
+\newblock Structural health monitoring using extremely compressed data through
+  deep learning.
+\newblock \emph{Computer-Aided Civil and Infrastructure Engineering},
+  35\penalty0 (6):\penalty0 597--614, 2020.
+
+\bibitem[Chen et~al.(2019)Chen, Fan, Wang, yu~Duan, Lin, and
+  Kot]{Chen2019LossyID}
+Zhuo Chen, Kui Fan, Shiqi Wang, Ling yu~Duan, Weisi Lin, and A.~Kot.
+\newblock Lossy intermediate deep learning feature compression and evaluation.
+\newblock \emph{Proceedings of the 27th ACM International Conference on
+  Multimedia}, 2019.
+
+\bibitem[Hu et~al.(2024)Hu, Lou, Yan, and Ye]{Hu2024ASO}
+Shizhe Hu, Zhengzheng Lou, Xiaoqiang Yan, and Yangdong Ye.
+\newblock A survey on information bottleneck.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 46:\penalty0 5325--5344, 2024.
+
+\bibitem[Kaplan et~al.(2020)Kaplan, McCandlish, Henighan, Brown, Chess, Child,
+  Gray, Radford, Wu, and Amodei]{Kaplan2020ScalingLF}
+J.~Kaplan, Sam McCandlish, T.~Henighan, Tom~B. Brown, B.~Chess, R.~Child, Scott
+  Gray, Alec Radford, Jeff Wu, and Dario Amodei.
+\newblock Scaling laws for neural language models.
+\newblock \emph{ArXiv}, abs/2001.08361, 2020.
+
+\bibitem[Tang et~al.(2020)Tang, Shi, Chu, Wang, and
+  Li]{Tang2020CommunicationEfficientDD}
+Zhenheng Tang, S.~Shi, X.~Chu, Wei Wang, and Bo~Li.
+\newblock Communication-efficient distributed deep learning: A comprehensive
+  survey.
+\newblock \emph{ArXiv}, abs/2003.06307, 2020.
+
+\bibitem[Tishby \& Zaslavsky(2015)Tishby and Zaslavsky]{Tishby2015DeepLA}
+Naftali Tishby and Noga Zaslavsky.
+\newblock Deep learning and the information bottleneck principle.
+\newblock \emph{2015 IEEE Information Theory Workshop (ITW)}, pp.\  1--5, 2015.
+
+\bibitem[Wang et~al.(2022)Wang, Qin, and Chen]{wang2022learning}
+Zhenzhen Wang, Minghai Qin, and Yen-Kuang Chen.
+\newblock Learning from the cnn-based compressed domain.
+\newblock In \emph{Proceedings of the IEEE/CVF Winter Conference on
+  Applications of Computer Vision}, pp.\  3582--3590, 2022.
+
+\end{thebibliography}

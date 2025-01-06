@@ -1,0 +1,40 @@
+# Title: Investigating Data Compression Techniques for Neural Network Training: A Comparative Study of Information Preservation and Model Performance
+# Experiment description: Explore and evaluate different compression methods (DCT, Random Projection, Downsampling, Binary Mask) for reducing neural network training data storage requirements while maintaining model performance. The study begins with MNIST dataset compression using DCT transformation, followed by implementing and comparing alternative compression schemes. Key research questions include: (1) Compression efficiency and accuracy trade-offs across different methods, (2) Relationship between compression ratio and model performance, (3) Information theoretic analysis of compressed representations, (4) Potential for dataset reconstruction or identification from compressed forms. The experiment will measure compression ratios, model accuracy on compressed data versus original data, and analyze the information-theoretic properties of compressed representations. Additional investigation will explore the cryptographic implications of compressed data uniqueness and the possibility of dataset identification through compressed representations. This research aims to establish optimal compression strategies for reducing storage and bandwidth requirements in neural network training while maintaining model performance, with potential applications in efficient AI training and data privacy.
+## Run 0: Baseline (DCT)
+Results: {'mnist': {'best_val_acc_mean': 95.58, 'test_acc_mean': 95.58, 'total_train_time_mean': 827.2352156639099}}
+Description: Baseline using DCT compression with 16x16 coefficients (256 values).
+## Run 1: Random Projection
+Results: {'mnist': {'best_val_acc_mean': 10.58, 'test_acc_mean': 10.81, 'total_train_time_mean': 679.99}}
+Description: Using random projection to compress 784 dimensions down to 256 dimensions. Random projection preserves distances between points approximately (Johnson-Lindenstrauss lemma) while being computationally efficient. The extremely poor performance (barely above random chance) suggests that while random projections theoretically preserve distances, the specific implementation may have lost critical spatial relationships in the image data that are important for digit recognition. This indicates that maintaining spatial structure could be crucial for this task.
+
+## Run 2: Downsampling
+Results: {'mnist': {'best_val_acc_mean': 98.63, 'test_acc_mean': 98.63, 'total_train_time_mean': 706.82}}
+Description: Simple spatial downsampling of the 28x28 images to 16x16 using bilinear interpolation. This preserves spatial relationships while reducing dimensions to 256 values, matching our previous compression sizes. Unlike random projection, this maintains local image structure which may be important for digit recognition. The excellent performance (98.63% accuracy) suggests that preserving spatial relationships is crucial for MNIST digit recognition. The method actually outperformed the DCT baseline, likely because downsampling maintains the essential shape information while removing noise and redundant details.
+
+## Run 3: Binary Thresholding
+Results: {'mnist': {'best_val_acc_mean': 98.47, 'test_acc_mean': 98.47, 'total_train_time_mean': 908.03}}
+Description: Convert each pixel to binary (0 or 1) using Otsu's thresholding method, then downsample to 16x16. This creates a binary mask of each digit, resulting in an extremely compact representation (1 bit per pixel instead of 8 bits) while preserving the core shape information. This tests whether full grayscale information is necessary for digit recognition. The results show excellent performance (98.47% accuracy) very close to the downsampling approach (98.63%), suggesting that binary thresholding preserves the essential shape information needed for digit recognition. This is particularly interesting as it achieves this high accuracy while requiring only 1/8th of the storage space compared to 8-bit grayscale representations. The slightly longer training time (908s vs 707s for downsampling) might be due to the additional thresholding computation during data loading.
+
+# Visualization Analysis
+
+## Training Loss (train_loss_mnist_across_runs.png)
+This plot shows the training loss curves for all compression methods over the course of training. The x-axis represents training iterations, while the y-axis shows the loss value. Shaded regions around each line represent the standard error across multiple runs. Key observations:
+- DCT and Random Projection show higher initial loss and slower convergence
+- Downsampling and Binary Threshold methods converge faster and to lower loss values
+- Binary Threshold shows slightly more variance (wider shaded region) but maintains stable convergence
+- Random Projection's flat, high loss curve indicates failure to learn meaningful features
+
+## Validation Loss (val_loss_mnist_across_runs.png)
+The validation loss curves provide insight into generalization performance during training. Notable patterns:
+- Downsampling and Binary Threshold methods show consistent validation performance with minimal overfitting
+- DCT exhibits higher validation loss but remains stable
+- Random Projection's high, unstable validation loss confirms its failure to learn
+- The close alignment between training and validation curves for successful methods suggests good generalization
+
+## Test Accuracy (test_accuracy_mnist_across_runs.png)
+This bar plot compares final test accuracy across all methods:
+- Downsampling achieves the highest accuracy (98.63%)
+- Binary Threshold performs nearly as well (98.47%)
+- DCT shows respectable performance (95.58%)
+- Random Projection fails dramatically (10.81%)
+The plot clearly illustrates that maintaining spatial relationships (Downsampling, Binary Threshold) is crucial for MNIST digit recognition, while methods that disrupt spatial structure (Random Projection) fail despite theoretical guarantees about distance preservation.

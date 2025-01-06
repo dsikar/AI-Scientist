@@ -1,0 +1,38 @@
+{
+    "Summary": "The paper proposes a framework called CompressedNet for joint optimization of network width and input compression. It evaluates the trade-offs between architectural capacity and input information density using width multipliers and DCT compression ratios on the MNIST dataset. The findings suggest that moderate compression with reduced width can improve both accuracy and efficiency, challenging conventional wisdom about model capacity and performance trade-offs.",
+    "Strengths": [
+        "The paper addresses a relevant and practical problem in the field of efficient deep learning.",
+        "The joint optimization of network width and input compression is a novel approach, revealing non-obvious interactions between architectural capacity and data representation.",
+        "Comprehensive experiments and analysis on MNIST demonstrate the potential of the proposed method in improving accuracy and efficiency.",
+        "Open-source implementation of CompressedNet is provided, facilitating further research in this area."
+    ],
+    "Weaknesses": [
+        "The experimental results are limited to the MNIST dataset, which may not generalize to more complex datasets and real-world scenarios.",
+        "The paper does not explore the impact of joint optimization on more advanced architectures like ResNets or Transformers, limiting the scope of its findings.",
+        "Theoretical analysis of the minimum information needed for effective learning with compressed inputs is lacking.",
+        "The paper does not provide detailed comparisons with other state-of-the-art methods in terms of computational cost and efficiency.",
+        "The clarity of the paper could be improved, especially in the sections describing the methodology and experimental setup."
+    ],
+    "Originality": 3,
+    "Quality": 3,
+    "Clarity": 3,
+    "Significance": 3,
+    "Questions": [
+        "Can the authors provide results on more complex datasets to validate the generalizability of their findings?",
+        "How does the proposed method perform on advanced architectures like ResNets or Transformers?",
+        "Can the authors provide a more detailed theoretical analysis of the minimum information needed for effective learning with compressed inputs?",
+        "How does the joint optimization method compare with other state-of-the-art methods in terms of computational cost and efficiency?"
+    ],
+    "Limitations": [
+        "The results are specific to the MNIST dataset, and the generalizability to more complex datasets is uncertain.",
+        "The paper lacks a theoretical analysis of the minimum information needed for effective learning with compressed inputs.",
+        "The scope is limited to basic CNN architectures, and the impact on advanced architectures is not explored."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 3,
+    "Presentation": 3,
+    "Contribution": 3,
+    "Overall": 4,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

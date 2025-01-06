@@ -1,0 +1,20 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Background}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Problem Setting}{section.3}% 4
+\BOOKMARK [1][-]{section.4}{Method}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Frequency-Domain Compression}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Distance-Preserving Projection}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Spatial Structure Preservation}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.4}{Binary Feature Extraction}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.5}{Neural Architecture}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Experimental Setup}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Implementation}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Training Protocol}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{Evaluation}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Results}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Compression Performance}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Training Dynamics}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{Computational Efficiency}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.4}{Limitations}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{Conclusions and Future Work}{}% 20

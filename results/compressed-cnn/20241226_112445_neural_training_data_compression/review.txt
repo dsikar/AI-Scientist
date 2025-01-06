@@ -1,0 +1,40 @@
+{
+    "Summary": "The paper addresses the challenge of compressing large training datasets for deep learning while retaining the necessary information for effective model training. It systematically compares four compression techniques: Discrete Cosine Transform (DCT), Random Projection, Spatial Downsampling, and Binary Thresholding. The key finding is that preserving spatial structure is crucial for maintaining model performance. Experiments on MNIST demonstrate that methods like Spatial Downsampling (98.63% accuracy) and Binary Thresholding (98.47% accuracy) outperform structure-agnostic methods like Random Projection (10.81% accuracy).",
+    "Strengths": [
+        "Addresses a crucial problem in deep learning: dataset compression while maintaining information necessary for model training.",
+        "Systematic comparison of four distinct compression techniques.",
+        "Key finding that preserving spatial structure is crucial for maintaining model performance.",
+        "Comprehensive empirical evaluation with detailed analysis of training dynamics and computational efficiency.",
+        "Binary Thresholding achieves significant storage reduction with high accuracy."
+    ],
+    "Weaknesses": [
+        "Evaluation is limited to the MNIST dataset, which is relatively simple.",
+        "Fixed compression ratio (3.125:1) leaves the optimal ratio unexplored.",
+        "Single random seed used for all experiments may affect the robustness of the results.",
+        "No exploration of the impact of different neural architectures.",
+        "Additional ablation studies could be beneficial, particularly exploring the impact of different aggregators."
+    ],
+    "Originality": 3,
+    "Quality": 3,
+    "Clarity": 3,
+    "Significance": 3,
+    "Questions": [
+        "Have you considered evaluating the performance on more complex datasets?",
+        "How does the performance vary with different compression ratios?",
+        "Would using multiple random seeds affect the robustness of the results?",
+        "How do different neural architectures impact the effectiveness of the compression methods?"
+    ],
+    "Limitations": [
+        "Evaluation limited to the MNIST dataset.",
+        "Fixed compression ratio leaves optimal ratio unexplored.",
+        "Single random seed used for all experiments.",
+        "No exploration of different neural architectures."
+    ],
+    "Ethical Concerns": false,
+    "Soundness": 3,
+    "Presentation": 3,
+    "Contribution": 3,
+    "Overall": 4,
+    "Confidence": 4,
+    "Decision": "Reject"
+}

@@ -1,0 +1,46 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azimi \& Pekcan(2020)Azimi and Pekcan]{azimi2020structural}
+Mohsen Azimi and Gokhan Pekcan.
+\newblock Structural health monitoring using extremely compressed data through
+  deep learning.
+\newblock \emph{Computer-Aided Civil and Infrastructure Engineering},
+  35\penalty0 (6):\penalty0 597--614, 2020.
+
+\bibitem[Johnson \& Guestrin(2018)Johnson and Guestrin]{Johnson2018TrainingDM}
+Tyler~B. Johnson and Carlos Guestrin.
+\newblock Training deep models faster with robust, approximate importance
+  sampling.
+\newblock pp.\  7276--7286, 2018.
+
+\bibitem[Katharopoulos \& Fleuret(2018)Katharopoulos and
+  Fleuret]{Katharopoulos2018NotAS}
+Angelos Katharopoulos and F.~Fleuret.
+\newblock Not all samples are created equal: Deep learning with importance
+  sampling.
+\newblock pp.\  2530--2539, 2018.
+
+\bibitem[Wang et~al.(2022)Wang, Qin, and Chen]{wang2022learning}
+Zhenzhen Wang, Minghai Qin, and Yen-Kuang Chen.
+\newblock Learning from the cnn-based compressed domain.
+\newblock In \emph{Proceedings of the IEEE/CVF Winter Conference on
+  Applications of Computer Vision}, pp.\  3582--3590, 2022.
+
+\bibitem[Yang et~al.(2023)Yang, Kang, and Mirzasoleiman]{Yang2023TowardsSL}
+Yu~Yang, Hao Kang, and Baharan Mirzasoleiman.
+\newblock Towards sustainable learning: Coresets for data-efficient deep
+  learning.
+\newblock pp.\  39314--39330, 2023.
+
+\bibitem[Zhao et~al.(2022)Zhao, Liu, Peng, Zhu, Liu, and
+  Jin]{Zhao2022MultiresourceIF}
+Yihao Zhao, Yuanqiang Liu, Yanghua Peng, Yibo Zhu, Xuanzhe Liu, and Xin Jin.
+\newblock Multi-resource interleaving for deep learning training.
+\newblock \emph{Proceedings of the ACM SIGCOMM 2022 Conference}, 2022.
+
+\end{thebibliography}

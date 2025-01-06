@@ -1,0 +1,66 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Azimi \& Pekcan(2020)Azimi and Pekcan]{azimi2020structural}
+Mohsen Azimi and Gokhan Pekcan.
+\newblock Structural health monitoring using extremely compressed data through
+  deep learning.
+\newblock \emph{Computer-Aided Civil and Infrastructure Engineering},
+  35\penalty0 (6):\penalty0 597--614, 2020.
+
+\bibitem[Han et~al.(2015{\natexlab{a}})Han, Mao, and Dally]{Han2015DeepCC}
+Song Han, Huizi Mao, and W.~Dally.
+\newblock Deep compression: Compressing deep neural network with pruning,
+  trained quantization and huffman coding.
+\newblock \emph{arXiv: Computer Vision and Pattern Recognition},
+  2015{\natexlab{a}}.
+
+\bibitem[Han et~al.(2015{\natexlab{b}})Han, Pool, Tran, and
+  Dally]{Han2015LearningBW}
+Song Han, Jeff Pool, J.~Tran, and W.~Dally.
+\newblock Learning both weights and connections for efficient neural network.
+\newblock pp.\  1135--1143, 2015{\natexlab{b}}.
+
+\bibitem[Howard et~al.(2017)Howard, Zhu, Chen, Kalenichenko, Wang, Weyand,
+  Andreetto, and Adam]{Howard2017MobileNetsEC}
+Andrew~G. Howard, Menglong Zhu, Bo~Chen, Dmitry Kalenichenko, Weijun Wang,
+  Tobias Weyand, M.~Andreetto, and Hartwig Adam.
+\newblock Mobilenets: Efficient convolutional neural networks for mobile vision
+  applications.
+\newblock \emph{ArXiv}, abs/1704.04861, 2017.
+
+\bibitem[LeCun et~al.(1989)LeCun, Denker, and Solla]{LeCun1989OptimalBD}
+Yann LeCun, J.~Denker, and S.~Solla.
+\newblock Optimal brain damage.
+\newblock pp.\  598--605, 1989.
+
+\bibitem[Shi et~al.(2023)Shi, Wang, Cao, Lin, and Wang]{Shi2023TECOAU}
+Yubo Shi, Meiqi Wang, Tianyu Cao, Jun Lin, and Zhongfeng Wang.
+\newblock Teco: A unified feature map compression framework based on transform
+  and entropy.
+\newblock \emph{IEEE Transactions on Neural Networks and Learning Systems},
+  35:\penalty0 17856--17866, 2023.
+
+\bibitem[Wang et~al.(2022)Wang, Qin, and Chen]{wang2022learning}
+Zhenzhen Wang, Minghai Qin, and Yen-Kuang Chen.
+\newblock Learning from the cnn-based compressed domain.
+\newblock In \emph{Proceedings of the IEEE/CVF Winter Conference on
+  Applications of Computer Vision}, pp.\  3582--3590, 2022.
+
+\bibitem[Zeng et~al.(2021)Zeng, Liu, Sun, Li, Fang, and
+  Lu]{Zeng2021IterativeDM}
+Y.~Zeng, Xu-Sheng Liu, Lintan Sun, Wenzhong Li, Yuchu Fang, and Sanglu Lu.
+\newblock Iterative deep model compression and acceleration in the frequency
+  domain.
+\newblock pp.\  331--346, 2021.
+
+\bibitem[Zoph \& Le(2016)Zoph and Le]{Zoph2016NeuralAS}
+Barret Zoph and Quoc~V. Le.
+\newblock Neural architecture search with reinforcement learning.
+\newblock \emph{ArXiv}, abs/1611.01578, 2016.
+
+\end{thebibliography}
