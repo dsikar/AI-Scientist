@@ -1,0 +1,52 @@
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: template.aux
+The style file: iclr2024_conference.bst
+Database file #1: references.bib
+Repeated entry---line 58 of file references.bib
+ : @article{Han2015DeepCC
+ :                       ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in Xu2015ShowAA
+You've used 11 entries,
+            2773 wiz_defined-function locations,
+            667 strings with 7572 characters,
+and the built_in function-call counts, 6724 in all, are:
+= -- 577
+> -- 510
+< -- 6
++ -- 170
+- -- 159
+* -- 570
+:= -- 1029
+add.period$ -- 33
+call.type$ -- 11
+change.case$ -- 86
+chr.to.int$ -- 11
+cite$ -- 23
+duplicate$ -- 278
+empty$ -- 440
+format.name$ -- 172
+if$ -- 1418
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 11
+newline$ -- 63
+num.names$ -- 44
+pop$ -- 163
+preamble$ -- 1
+purify$ -- 75
+quote$ -- 0
+skip$ -- 264
+stack$ -- 0
+substring$ -- 225
+swap$ -- 63
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 121
+warning$ -- 1
+while$ -- 45
+width$ -- 0
+write$ -- 148
+(There was 1 error message)

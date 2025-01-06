@@ -1,0 +1,47 @@
+# Title: Investigating Single-Channel and Multi-Channel RGB Approaches in Neural Network Image Classification: A Study of Information Content and Model Performance
+# Experiment description: This research aims to determine whether using a single RGB channel, or fusing two or three RGB channels into a single representation, can preserve sufficient information for an image classifier neural network. We will evaluate classifier performance (accuracy, precision, recall) on standard datasets, comparing single-channel, dual-channel, and fully fused multi-channel inputs against the traditional three-channel RGB format. The study will also explore how channel selection or fusion impacts training dynamics, such as convergence speed and model generalization, and examine if certain channels or channel combinations retain key features crucial for classification tasks. Potential benefits include reduced computational overhead and simpler model architectures, offering insights into the minimal necessary color information needed for high-performing image classification models. Our baseline runs on channel 0 (assumed Red).
+
+Experimental Plan:
+- Run 0: Red channel (Baseline, completed)
+- Run 1: Green channel
+- Run 2: Blue channel
+- Run 3: Two-channel fusion (Red+Green)
+- Run 4: All-channel fusion
+
+## Run 0: Baseline
+Results: {'cifar10': {'best_val_acc_mean': 77.95, 'test_acc_mean': 77.95, 'total_train_time_mean': 5919.307706594467}}
+Description: Baseline results using only the Red channel.
+
+## Run 1: Green Channel
+Results: {'cifar10': {'best_val_acc_mean': 78.5, 'test_acc_mean': 78.5, 'total_train_time_mean': 5988.658805131912}}
+Description: Testing performance using only the Green channel to compare against Red channel baseline. The Green channel showed slightly better performance than the Red channel (78.5% vs 77.95% accuracy), suggesting that the Green channel might contain marginally more discriminative information for the CIFAR-10 classification task. The training time was comparable to the Red channel baseline (approximately 5988s vs 5919s), indicating no significant computational differences between channels.
+
+## Run 2: Blue Channel
+Results: {'cifar10': {'best_val_acc_mean': 78.22, 'test_acc_mean': 78.22, 'total_train_time_mean': 5634.482670545578}}
+Description: Testing performance using only the Blue channel to complete our understanding of individual channel performance. The Blue channel achieved 78.22% accuracy, positioning it between the Red channel (77.95%) and Green channel (78.5%) in performance. This suggests that all individual channels carry similar levels of discriminative information, with only minor variations in classification capability. The training time was slightly faster than both Red and Green channels (5634s vs 5919s/5988s), though this difference is not practically significant.
+
+## Run 3: Two-Channel Fusion (Red+Green)
+Results: {'cifar10': {'best_val_acc_mean': 80.29, 'test_acc_mean': 80.29, 'total_train_time_mean': 4905.198427915573}}
+Description: Testing performance using a fusion of Red and Green channels to investigate if combining channels provides additional discriminative power beyond single-channel performance. This combination was chosen first as Green showed the best individual performance and Red provides complementary information. The results showed a significant improvement over single-channel approaches, achieving 80.29% accuracy compared to the best single-channel performance of 78.5% (Green channel). This ~1.8% improvement suggests that the combination of Red and Green channels provides complementary information that enhances the model's discriminative capabilities. Additionally, the training time was notably shorter (4905s vs ~5900s for single channels), possibly due to the more informative input allowing faster convergence.
+
+## Run 4: All-Channel Fusion
+Results: {'cifar10': {'best_val_acc_mean': 80.62, 'test_acc_mean': 80.62, 'total_train_time_mean': 4854.961581707001}}
+Description: Testing performance using all three RGB channels to establish a complete comparison between single-channel, two-channel, and full RGB approaches. The results showed a modest improvement over the two-channel fusion, achieving 80.62% accuracy compared to 80.29% with Red+Green fusion. This relatively small improvement (+0.33%) suggests that while the Blue channel does contribute additional discriminative information, its contribution is less significant than the initial gain from Red+Green fusion (+1.8%). The training time (4854s) was comparable to the two-channel approach (4905s), indicating that adding the third channel doesn't significantly impact computational requirements. These results suggest that for this particular classification task, most of the crucial color information is captured by just two channels, with diminishing returns from adding the third channel.
+
+## Generated Figures
+
+### Figure 1: Classification Accuracy by Channel Configuration (accuracy_comparison.png)
+This bar plot visualizes the classification accuracy achieved by different channel configurations on the CIFAR-10 dataset. The x-axis shows the five different configurations tested (Red Channel, Green Channel, Blue Channel, Red+Green fusion, and All Channels), while the y-axis represents the test accuracy percentage. Key observations from this plot:
+- Single-channel performance ranges from 77.95% (Red) to 78.5% (Green)
+- Two-channel fusion (Red+Green) shows a significant jump to 80.29%
+- All-channel configuration achieves the highest accuracy at 80.62%
+The plot clearly illustrates the diminishing returns pattern, where the addition of the Blue channel to the Red+Green fusion yields only a modest improvement (+0.33%) compared to the larger gain (+1.8%) achieved by combining Red and Green channels.
+
+### Figure 2: Training Time by Channel Configuration (training_time_comparison.png)
+This bar plot compares the computational cost in terms of training time (in minutes) across different channel configurations. The x-axis shows the same five configurations, while the y-axis displays the total training time. Notable insights from this visualization:
+- Single-channel approaches show similar training times (~95-100 minutes)
+- Two-channel and three-channel configurations actually demonstrate faster training times (~81-82 minutes)
+- The reduction in training time for multi-channel configurations (approximately 15-18 minutes faster) suggests that the additional information provided by multiple channels helps the model converge more quickly
+- There is minimal difference in training time between two-channel and three-channel approaches, indicating that the computational overhead of adding the Blue channel is negligible
+
+These visualizations provide clear evidence that while using multiple channels improves model performance, the benefits of adding the third channel are relatively small compared to the initial gain from combining two channels. This insight could be valuable for applications where computational efficiency is important, as using just two channels might provide an optimal balance between accuracy and resource utilization.

@@ -1,0 +1,4 @@
+{
+    "system": "You are a post-doc researcher who is looking to publish a paper that will contribute significantly to the field.",
+    "task_description": "You are given the following file to work with, which studies training Convolutional neural networks with a single channel (either R, G or B), or a combination of two or more channel data combined into one channel. Please come up with interesting experiments to investigate the effect of using a single channel on network training loss and accuracy. The goal is to determine if certain channels carry more information content than others, or a combination of channel information may carry the same information content. Be sure to make notes and make explicit what channel or combinations of channels are being used. The baseline is for channel 0 (Assumed Red, Green = 1, Blue = 2)."
+}

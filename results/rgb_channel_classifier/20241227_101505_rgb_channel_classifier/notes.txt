@@ -1,0 +1,16 @@
+# Title: Investigating Single-Channel and Multi-Channel RGB Approaches in Neural Network Image Classification: A Study of Information Content and Model Performance
+# Experiment description: This research aims to determine whether using a single RGB channel, or fusing two or three RGB channels into a single representation, can preserve sufficient information for an image classifier neural network. We will evaluate classifier performance (accuracy, precision, recall) on standard datasets, comparing single-channel, dual-channel, and fully fused multi-channel inputs against the traditional three-channel RGB format. The study will also explore how channel selection or fusion impacts training dynamics, such as convergence speed and model generalization, and examine if certain channels or channel combinations retain key features crucial for classification tasks. Potential benefits include reduced computational overhead and simpler model architectures, offering insights into the minimal necessary color information needed for high-performing image classification models.
+
+Experimental Plan:
+- Run 0: Red channel (Baseline)
+- Run 1: Green channel
+- Run 2: Blue channel
+- Run 3: Two-channel fusion (R+G)
+- Run 4: All-channel fusion (R+G+B)
+
+## Run 0: Baseline (Red Channel)
+Results: {'cifar10': {'best_val_acc_mean': 77.95, 'test_acc_mean': 77.95, 'total_train_time_mean': 5919.307706594467}}
+Description: Baseline results using only the Red channel.
+
+## Run 1: Green Channel
+Description: Testing performance using only the Green channel to compare against Red channel baseline.

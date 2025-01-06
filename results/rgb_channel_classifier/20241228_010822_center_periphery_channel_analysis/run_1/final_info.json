@@ -1,0 +1,80 @@
+{
+  "cifar10": {
+    "means": {
+      "best_val_acc_mean": 69.95,
+      "test_acc_mean": 69.95,
+      "total_train_time_mean": 817.9693344831467,
+      "channel_mean": 2.0
+    },
+    "stderrs": {
+      "best_val_acc_stderr": 0.0,
+      "test_acc_stderr": 0.0,
+      "total_train_time_stderr": 1.429944367817604,
+      "channel_stderr": 0.0
+    },
+    "final_info_dict": {
+      "best_val_acc": [
+        69.95,
+        69.95
+      ],
+      "test_acc": [
+        69.95,
+        69.95
+      ],
+      "total_train_time": [
+        815.94708776474,
+        819.9915812015533
+      ],
+      "mask_type": [
+        "center",
+        "periphery"
+      ],
+      "channel": [
+        2,
+        2
+      ],
+      "config": [
+        {
+          "data_path": "./data",
+          "dataset": "cifar10",
+          "num_classes": 10,
+          "channel": 2,
+          "mask_type": "center",
+          "mask_radius": 16,
+          "model": "single_channel_cnn",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 5,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_1",
+          "seed": 0,
+          "compile_model": false
+        },
+        {
+          "data_path": "./data",
+          "dataset": "cifar10",
+          "num_classes": 10,
+          "channel": 2,
+          "mask_type": "periphery",
+          "mask_radius": 16,
+          "model": "single_channel_cnn",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 5,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_1",
+          "seed": 0,
+          "compile_model": false
+        }
+      ]
+    }
+  }
+}

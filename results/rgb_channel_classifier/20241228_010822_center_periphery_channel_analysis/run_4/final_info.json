@@ -1,0 +1,105 @@
+{
+  "cifar10": {
+    "means": {
+      "best_val_acc_mean": 70.93,
+      "test_acc_mean": 70.93,
+      "total_train_time_mean": 797.9937019348145,
+      "channel_mean": 1.0
+    },
+    "stderrs": {
+      "best_val_acc_stderr": 0.0,
+      "test_acc_stderr": 0.0,
+      "total_train_time_stderr": 0.9100270032595217,
+      "channel_stderr": 0.0
+    },
+    "final_info_dict": {
+      "best_val_acc": [
+        70.93,
+        70.93,
+        70.93
+      ],
+      "test_acc": [
+        70.93,
+        70.93,
+        70.93
+      ],
+      "total_train_time": [
+        799.81232213974,
+        795.9680869579315,
+        798.2006967067719
+      ],
+      "mask_type": [
+        "periphery",
+        "periphery",
+        "periphery"
+      ],
+      "channel": [
+        1,
+        1,
+        1
+      ],
+      "config": [
+        {
+          "data_path": "./data",
+          "dataset": "cifar10",
+          "num_classes": 10,
+          "channel": 1,
+          "mask_type": "periphery",
+          "mask_radius": 8,
+          "model": "single_channel_cnn",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 5,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_4",
+          "seed": 0,
+          "compile_model": false
+        },
+        {
+          "data_path": "./data",
+          "dataset": "cifar10",
+          "num_classes": 10,
+          "channel": 1,
+          "mask_type": "periphery",
+          "mask_radius": 16,
+          "model": "single_channel_cnn",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 5,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_4",
+          "seed": 0,
+          "compile_model": false
+        },
+        {
+          "data_path": "./data",
+          "dataset": "cifar10",
+          "num_classes": 10,
+          "channel": 1,
+          "mask_type": "periphery",
+          "mask_radius": 24,
+          "model": "single_channel_cnn",
+          "batch_size": 128,
+          "learning_rate": 0.01,
+          "weight_decay": 0.0001,
+          "epochs": 5,
+          "device": "cpu",
+          "num_workers": 2,
+          "log_interval": 100,
+          "eval_interval": 1000,
+          "out_dir": "run_4",
+          "seed": 0,
+          "compile_model": false
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "rgb_channel_classifier",
+        "Title": "Investigating Single-Channel and Multi-Channel RGB Approaches in Neural Network Image Classification: A Study of Information Content and Model Performance",
+        "Experiment": "This research aims to determine whether using a single RGB channel, or fusing two or three RGB channels into a single representation, can preserve sufficient information for an image classifier neural network. We will evaluate classifier performance (accuracy, precision, recall) on standard datasets, comparing single-channel, dual-channel, and fully fused multi-channel inputs against the traditional three-channel RGB format. The study will also explore how channel selection or fusion impacts training dynamics, such as convergence speed and model generalization, and examine if certain channels or channel combinations retain key features crucial for classification tasks. Potential benefits include reduced computational overhead and simpler model architectures, offering insights into the minimal necessary color information needed for high-performing image classification models. Our baseline runs on channel 0 (assumed Red).",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "center_periphery_channel_analysis",
+        "Title": "Center versus Periphery: Analyzing Spatial Distribution of RGB Channel Information in Image Classification",
+        "Experiment": "Modify SingleChannelDataset to implement circular masking with a radius parameter. For each RGB channel, create two variants: center-only (circle) and periphery-only (inverse circle). Train models on these six combinations (2 spatial regions \u00d7 3 channels) to compare performance. Analyze which channels perform better with center information versus peripheral information. Include control experiments with full-channel baselines. Test multiple radius values to find optimal center-periphery split.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    }
+]
