@@ -1,3 +1,8 @@
+
+<h1 align="center">
+  <b>Cloned from <a href="https://github.com/SakanaAI/AI-Scientist">https://github.com/SakanaAI/AI-Scientist</a></b><br>
+</h1>
+
 <h1 align="center">
   <a href="https://github.com/SakanaAI/AI-Scientist/blob/main/docs/logo_2.png">
     <img src="docs/logo_2.png" width="215" /></a><br>
