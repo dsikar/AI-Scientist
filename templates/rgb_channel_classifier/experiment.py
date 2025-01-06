@@ -243,16 +243,21 @@ def test(config):
 
 def main():
     parser = argparse.ArgumentParser(description="Train Single Channel CNN for CIFAR Classification")
-    parser.add_argument("--data_path", type=str, default="./data", help="Path to save/load the dataset")
-    parser.add_argument("--batch_size", type=int, default=128, help="Batch size")
-    parser.add_argument("--learning_rate", type=float, default=0.01, help="Initial learning rate")
-    parser.add_argument("--epochs", type=int, default=30, help="Number of epochs to train")
+    # parser.add_argument("--data_path", type=str, default="./data", help="Path to save/load the dataset")
+    # parser.add_argument("--batch_size", type=int, default=128, help="Batch size")
+    # parser.add_argument("--learning_rate", type=float, default=0.01, help="Initial learning rate")
+    # parser.add_argument("--epochs", type=int, default=30, help="Number of epochs to train")
     parser.add_argument("--out_dir", type=str, default="run_0", help="Output directory")
-    parser.add_argument("--channel", type=int, default=0, choices=[0, 1, 2], help="Channel to use (0=R, 1=G, 2=B)")
+    # parser.add_argument("--channel", type=int, default=0, choices=[0, 1, 2], help="Channel to use (0=R, 1=G, 2=B)")
     args = parser.parse_args()
+    out_dir = args.out_dir
+    os.makedirs(out_dir, exist_ok=True)
+    print(f"Outputs will be saved to {out_dir}")
 
-    os.makedirs(args.out_dir, exist_ok=True)
-    print(f"Outputs will be saved to {args.out_dir}")
+    data_path = './data'
+    batch_size = 128
+    learning_rate = 0.01
+    epochs = 30
 
     # Define datasets and number of seeds per dataset
     datasets = ['cifar10']
@@ -273,8 +278,7 @@ def main():
                 learning_rate=args.learning_rate,
                 epochs=args.epochs,
                 out_dir=args.out_dir,
-                seed=seed_offset,
-                channel=args.channel
+                seed=seed_offset
             )
             os.makedirs(config.out_dir, exist_ok=True)
             print(f"Starting training for {dataset} with seed {seed_offset}")
