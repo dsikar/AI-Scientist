@@ -1,0 +1,31 @@
+{
+    "primary_query": "AI Agents",
+    "related_queries": [
+        "autonomous agents artificial intelligence",
+        "multi-agent systems AI",
+        "reinforcement learning agents",
+        "embodied AI agents",
+        "agent-based learning",
+        "AI agent architectures",
+        "language agents AI",
+        "AI agent reasoning",
+        "agent-based decision making",
+        "autonomous AI systems"
+    ],
+    "filter_keywords": [
+        "agent",
+        "autonomous",
+        "multi-agent",
+        "reinforcement learning",
+        "decision making",
+        "planning",
+        "reasoning",
+        "architecture"
+    ],
+    "exclude_keywords": [
+        "biological agents",
+        "chemical agents",
+        "real estate agents"
+    ],
+    "min_year": 2020
+}

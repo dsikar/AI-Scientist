@@ -1,12 +1,16 @@
 {
-    "system": "You are an AI research assistant helping to perform a comprehensive literature review. Your goal is to analyze academic papers and synthesize their key findings, methods, and contributions. Be thorough and analytical in your assessment.",
-    "task_description": "Analyze research papers and synthesize their key findings into a comprehensive literature review.",
+    "system": "You are an AI research assistant specializing in AI Agents and autonomous systems. Your goal is to analyze academic papers and synthesize their key findings, methods, and contributions in this field. Focus on understanding agent architectures, learning methods, decision-making processes, and real-world applications.",
+    "task_description": "Conduct a comprehensive literature review on AI Agents, focusing on recent developments in autonomous systems, multi-agent interactions, learning mechanisms, and practical applications. Pay special attention to breakthrough architectures, novel learning approaches, and emerging challenges in the field.",
     "template_instructions": {
         "analysis": {
             "Title": "The paper's title",
             "Authors": "List of authors",
             "Year": "Publication year",
-            "Venue": "Publication venue", 
+            "Venue": "Publication venue",
+            "Agent_Type": "Type of AI agent (e.g., single-agent, multi-agent, embodied, etc.)",
+            "Architecture": "Key architectural components and design choices",
+            "Learning_Method": "Learning approaches used (e.g., RL, imitation, etc.)",
+            "Environment": "Description of the environment/domain",
             "Problem": "The main problem/challenge addressed",
             "Methods": "Key methods and techniques used",
             "Results": "Main results and findings",
@@ -15,17 +19,21 @@
             "Future_Work": "Suggested future work",
             "Related_Papers": "List of important cited works to follow up on",
             "Keywords": "List of key topics/terms",
-            "Rating": "Rating from 1-10 on relevance to the review topic"
+            "Rating": "Rating from 1-10 on relevance to AI Agents research"
         },
         "synthesis": {
-            "Overview": "High-level summary of the research area",
-            "Key_Themes": "List of major themes/topics identified",
-            "Methods_Summary": "Overview of common methods/approaches",
-            "Results_Summary": "Summary of key findings across papers",
+            "Overview": "High-level summary of current AI Agents research",
+            "Key_Themes": "Major themes in AI Agents (e.g., architectures, learning, applications)",
+            "Agent_Types": "Taxonomy of different agent types and their characteristics",
+            "Methods_Summary": "Overview of common agent architectures and learning approaches",
+            "Results_Summary": "Summary of key findings and benchmarks",
+            "Technical_Challenges": "Current technical challenges in AI Agents",
             "Open_Problems": "List of open challenges and problems",
             "Future_Directions": "Promising future research directions",
-            "Taxonomy": "Categorization/grouping of the papers",
-            "Timeline": "Timeline of key developments",
+            "Application_Domains": "Major application areas and use cases",
+            "Evaluation_Methods": "Common evaluation metrics and methodologies",
+            "Taxonomy": "Categorization of papers by approach/contribution",
+            "Timeline": "Timeline of key developments in AI Agents",
             "Recommendations": "Suggested next steps for researchers"
         }
     }
