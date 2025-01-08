@@ -284,6 +284,9 @@ def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     if not query:
         return None
     try:
+        # Add delay to respect rate limits
+        time.sleep(5)
+        
         rsp = requests.get(
             "https://api.semanticscholar.org/graph/v1/paper/search",
             params={
