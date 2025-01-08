@@ -1,11 +1,12 @@
 import json
 import os
 import os.path as osp
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 
 from ai_scientist.llm import get_response_from_llm, extract_json_between_markers
 from ai_scientist.generate_ideas import search_for_papers
 from ai_scientist.paper_loader import load_paper_text
+from ai_scientist.paper_downloader import download_paper, extract_metadata, PaperAccessError
 
 literature_system_msg = """You are an AI research assistant helping to perform a comprehensive literature review.
 Your goal is to analyze academic papers and synthesize their key findings, methods, and contributions.
@@ -149,6 +150,10 @@ def perform_literature_review(
     # Get absolute path for output directory
     abs_output_dir = os.path.abspath(output_dir)
     
+    # Create papers directory
+    papers_dir = os.path.join(abs_output_dir, "papers")
+    os.makedirs(papers_dir, exist_ok=True)
+    
     # Analyze each paper
     analyses = []
     for paper in papers:
@@ -156,17 +161,40 @@ def perform_literature_review(
         if not paper_id:
             continue
             
-        # Try to get PDF text
+        paper_dir = os.path.join(papers_dir, paper_id)
+        os.makedirs(paper_dir, exist_ok=True)
+        
+        # Try to get full text first
         try:
-            pdf_path = os.path.join(abs_output_dir, f"{paper_id}.pdf")
-            # TODO: Implement PDF download from S2 API
+            pdf_path = download_paper(paper, paper_dir)
             paper_text = load_paper_text(pdf_path)
-        except Exception as e:
-            print(f"Failed to load paper {paper_id}: {e}")
-            continue
+            analysis = analyze_paper(paper_text, client, model, topic, temperature)
             
-        analysis = analyze_paper(paper_text, client, model, topic, temperature)
+        except (PaperAccessError, Exception) as e:
+            print(f"Failed to get full text for {paper_id}, falling back to metadata: {e}")
+            
+            # Extract available metadata
+            metadata = extract_metadata(paper)
+            
+            # Save metadata
+            metadata_path = os.path.join(paper_dir, "metadata.json")
+            with open(metadata_path, "w") as f:
+                json.dump(metadata, f, indent=2)
+                
+            # Analyze with limited info
+            metadata_text = f"""Title: {metadata['title']}
+Authors: {', '.join(metadata['authors'])}
+Year: {metadata['year']}
+Venue: {metadata['venue']}
+Citations: {metadata['citation_count']}
+Abstract: {metadata['abstract']}"""
+
+            analysis = analyze_paper(metadata_text, client, model, topic, temperature)
+            
         if analysis:
+            # Add metadata about paper access
+            analysis["pdf_status"] = paper.get("openAccessPdf", {}).get("status")
+            analysis["analysis_type"] = "full_text" if "pdf_path" in locals() else "metadata_only"
             analyses.append(analysis)
             
     if not analyses:
