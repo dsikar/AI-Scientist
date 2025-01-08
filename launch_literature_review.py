@@ -9,7 +9,11 @@ import time
 from datetime import datetime
 
 from ai_scientist.llm import create_client, AVAILABLE_LLMS
-from ai_scientist.perform_literature_review import perform_literature_review
+from ai_scientist.perform_literature_review import (
+    perform_literature_review,
+    search_for_papers,
+    synthesize_analyses
+)
 from ai_scientist.paper_loader import load_paper_text
 
 def print_time():
