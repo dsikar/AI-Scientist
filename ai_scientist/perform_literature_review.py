@@ -5,7 +5,7 @@ from typing import List, Dict, Optional
 
 from ai_scientist.llm import get_response_from_llm, extract_json_between_markers
 from ai_scientist.generate_ideas import search_for_papers
-from ai_scientist.perform_review import load_paper
+from ai_scientist.paper_loader import load_paper_text
 
 literature_system_msg = """You are an AI research assistant helping to perform a comprehensive literature review.
 Your goal is to analyze academic papers and synthesize their key findings, methods, and contributions.
@@ -157,7 +157,7 @@ def perform_literature_review(
         try:
             pdf_path = f"{output_dir}/{paper_id}.pdf"
             # TODO: Implement PDF download from S2 API
-            paper_text = load_paper(pdf_path)
+            paper_text = load_paper_text(pdf_path)
         except Exception as e:
             print(f"Failed to load paper {paper_id}: {e}")
             continue
