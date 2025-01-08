@@ -279,34 +279,37 @@ def on_backoff(details):
     )
 
 
-@backoff.on_exception(
-    backoff.expo, requests.exceptions.HTTPError, on_backoff=on_backoff
-)
 def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
+    """Search for papers using Semantic Scholar API without requiring an API key."""
     if not query:
         return None
-    rsp = requests.get(
-        "https://api.semanticscholar.org/graph/v1/paper/search",
-        headers={"X-API-KEY": S2_API_KEY},
-        params={
-            "query": query,
-            "limit": result_limit,
-            "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
-        },
-    )
-    print(f"Response Status Code: {rsp.status_code}")
-    print(
-        f"Response Content: {rsp.text[:500]}"
-    )  # Print the first 500 characters of the response content
-    rsp.raise_for_status()
-    results = rsp.json()
-    total = results["total"]
-    time.sleep(1.0)
-    if not total:
-        return None
+    try:
+        rsp = requests.get(
+            "https://api.semanticscholar.org/graph/v1/paper/search",
+            params={
+                "query": query,
+                "limit": result_limit,
+                "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
+            },
+            timeout=30
+        )
+        rsp.raise_for_status()
+        results = rsp.json()
+        total = results.get("total", 0)
+        
+        if not total:
+            print(f"No results found for query: {query}")
+            return None
 
-    papers = results["data"]
-    return papers
+        papers = results.get("data", [])
+        if papers:
+            print(f"Found {len(papers)} papers for query: {query}")
+            return papers
+        return None
+        
+    except requests.exceptions.RequestException as e:
+        print(f"Error searching for papers: {e}")
+        return None
 
 
 novelty_system_msg = """You are an ambitious AI PhD student who is looking to publish a paper that will contribute significantly to the field.
