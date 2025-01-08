@@ -47,11 +47,24 @@ def search_semantic_scholar(
             print("\nPaper details:")
             for i, paper in enumerate(papers, 1):
                 print(f"\n--- Paper {i} ---")
-                print(f"Title: {paper.get('title')}")
-                print(f"Year: {paper.get('year')}")
-                print(f"Citations: {paper.get('citationCount')}")
-                print(f"URL: {paper.get('url')}")
-                print(f"Open Access PDF: {paper.get('openAccessPdf')}")
+                print("All available fields:")
+                for key, value in paper.items():
+                    print(f"{key}: {value}")
+                
+                # If there's an openAccessPdf field, try to verify the URL
+                if paper.get('openAccessPdf'):
+                    pdf_info = paper['openAccessPdf']
+                    print("\nTesting PDF download:")
+                    print(f"Status: {pdf_info.get('status')}")
+                    if pdf_url := pdf_info.get('url'):
+                        try:
+                            # Just do a HEAD request to check content type
+                            head_resp = requests.head(pdf_url, timeout=30)
+                            print(f"Content-Type: {head_resp.headers.get('Content-Type')}")
+                            print(f"Content-Length: {head_resp.headers.get('Content-Length')}")
+                            print(f"Status Code: {head_resp.status_code}")
+                        except requests.exceptions.RequestException as e:
+                            print(f"Failed to verify PDF URL: {e}")
                 
             return papers
             
