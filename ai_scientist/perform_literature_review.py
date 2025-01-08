@@ -146,6 +146,9 @@ def perform_literature_review(
     # Filter by citation count
     papers = [p for p in papers if p.get("citationCount", 0) >= min_citations]
     
+    # Get absolute path for output directory
+    abs_output_dir = os.path.abspath(output_dir)
+    
     # Analyze each paper
     analyses = []
     for paper in papers:
@@ -155,7 +158,7 @@ def perform_literature_review(
             
         # Try to get PDF text
         try:
-            pdf_path = f"{output_dir}/{paper_id}.pdf"
+            pdf_path = os.path.join(abs_output_dir, f"{paper_id}.pdf")
             # TODO: Implement PDF download from S2 API
             paper_text = load_paper_text(pdf_path)
         except Exception as e:
@@ -174,9 +177,12 @@ def perform_literature_review(
     synthesis = synthesize_analyses(analyses, topic, client, model, temperature)
     
     # Save results
-    with open(f"{output_dir}/analyses.json", "w") as f:
+    analyses_path = os.path.join(abs_output_dir, "analyses.json")
+    synthesis_path = os.path.join(abs_output_dir, "synthesis.json")
+    
+    with open(analyses_path, "w") as f:
         json.dump(analyses, f, indent=2)
-    with open(f"{output_dir}/synthesis.json", "w") as f:
+    with open(synthesis_path, "w") as f:
         json.dump(synthesis, f, indent=2)
         
     return synthesis
