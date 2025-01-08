@@ -1,0 +1,32 @@
+{
+    "system": "You are an AI research assistant helping to perform a comprehensive literature review. Your goal is to analyze academic papers and synthesize their key findings, methods, and contributions. Be thorough and analytical in your assessment.",
+    "task_description": "Analyze research papers and synthesize their key findings into a comprehensive literature review.",
+    "template_instructions": {
+        "analysis": {
+            "Title": "The paper's title",
+            "Authors": "List of authors",
+            "Year": "Publication year",
+            "Venue": "Publication venue", 
+            "Problem": "The main problem/challenge addressed",
+            "Methods": "Key methods and techniques used",
+            "Results": "Main results and findings",
+            "Contributions": "List of key contributions",
+            "Limitations": "List of limitations and constraints",
+            "Future_Work": "Suggested future work",
+            "Related_Papers": "List of important cited works to follow up on",
+            "Keywords": "List of key topics/terms",
+            "Rating": "Rating from 1-10 on relevance to the review topic"
+        },
+        "synthesis": {
+            "Overview": "High-level summary of the research area",
+            "Key_Themes": "List of major themes/topics identified",
+            "Methods_Summary": "Overview of common methods/approaches",
+            "Results_Summary": "Summary of key findings across papers",
+            "Open_Problems": "List of open challenges and problems",
+            "Future_Directions": "Promising future research directions",
+            "Taxonomy": "Categorization/grouping of the papers",
+            "Timeline": "Timeline of key developments",
+            "Recommendations": "Suggested next steps for researchers"
+        }
+    }
+}
