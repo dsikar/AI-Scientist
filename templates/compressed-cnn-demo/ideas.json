@@ -9,48 +9,12 @@
         "novel": true
     },
     {
-        "Name": "compression_noise_robustness",
-        "Title": "Understanding Neural Network Robustness Through Noisy Compressed Representations",
-        "Experiment": "Modify CompressedDataset to include Gaussian noise injection in the compressed domain. Study two key variables: (1) Compression ratio by varying DCT coefficient mask size (8x8, 16x16, 24x24), (2) Noise magnitude (\u03c3 = 0.1, 0.2, 0.3). Compare models trained on: clean compressed data vs noisy compressed data. Measure: (1) Clean test accuracy, (2) Noisy test accuracy, (3) Accuracy degradation rate with increasing noise. Implementation requires adding noise_level parameter to CompressedDataset, creating different DCT masks, and extending evaluation to track performance under noise. Analyze how compression ratio affects natural noise tolerance.",
-        "Interestingness": 8,
-        "Feasibility": 9,
+        "Name": "learnable_compression_masks",
+        "Title": "Learning Task-Specific Compression Patterns: A Two-Phase Approach to Adaptive Data Compression",
+        "Experiment": "1. Train baseline model on uncompressed data. 2. Modify CompressedDataset to include a trainable mask initialized to ones. 3. Freeze model weights and train mask using gradient descent to minimize (loss + \u03bb||mask||\u2081), starting from different sparsity multipliers \u03bb. 4. For each \u03bb, record accuracy vs compression ratio curve. 5. Validate mask generalization by: (a) training on 20% of data and testing on rest, (b) comparing masks learned from different data subsets. 6. Analyze coefficient importance by computing correlation between mask values and accuracy impact. Key outputs: optimal sparsity-accuracy trade-off curves, visualization of learned masks, generalization metrics.",
+        "Interestingness": 9,
+        "Feasibility": 8,
         "Novelty": 8,
-        "novel": true
-    },
-    {
-        "Name": "compression_learning_dynamics",
-        "Title": "Understanding the Impact of Data Compression on Neural Network Learning Dynamics and Optimization Landscapes",
-        "Experiment": "Extend CompressedDataset to implement two compression schemes: (1) DCT (current), (2) Random projections using Gaussian matrices. For each scheme: (1) Track training loss/accuracy curves across learning rates [0.001, 0.01, 0.1], (2) Log gradient L2 norms and step-to-step correlations during training, (3) Analyze stability of training by measuring loss variance in final epochs. Add gradient_stats() function to compute metrics during training. Compare convergence speeds and stable learning rate ranges between compression types. Investigate how different frequency components (DCT) vs random components contribute to model performance through systematic ablation. Implementation requires adding random projection compression, modifying training loop to track gradient metrics, and adding analysis functions.",
-        "Interestingness": 9,
-        "Feasibility": 9,
-        "Novelty": 9,
-        "novel": true
-    },
-    {
-        "Name": "compression_architecture_interaction",
-        "Title": "Analyzing the Interaction Between Data Compression and Neural Network Width in Deep Learning",
-        "Experiment": "Modify CompressedNet to create width variants using channel multipliers [0.5x, 1x, 2x] applied to all conv layers. For each width variant: (1) Train with DCT compression ratios [0.1, 0.3, 0.5], (2) Track model performance metrics (accuracy, loss) and efficiency metrics (FLOPs, parameters), (3) Analyze feature quality through layer-wise activation statistics. Implementation requires: adding width multiplier parameter to CompressedNet, creating FLOP counting utility, extending training loop to handle width variants. Compare accuracy vs. computational cost trade-offs across different width-compression combinations to identify optimal configurations.",
-        "Interestingness": 9,
-        "Feasibility": 9,
-        "Novelty": 9,
-        "novel": true
-    },
-    {
-        "Name": "learned_adaptive_compression",
-        "Title": "Learning Task-Specific Data Compression: Adaptive Frequency Band Selection for Neural Network Training",
-        "Experiment": "Modify CompressedDataset to include learnable importance weights for frequency bands. Changes: (1) Define 8 frequency bands in DCT space based on coefficient distances from DC, (2) Add trainable vector (8 parameters) for band importance, (3) Apply softmax-weighted masking per band. Compare against fixed compression using: (1) Final accuracy vs compression ratio, (2) Per-class accuracy, (3) Visualization of learned band importance. Track band importance evolution during training. Implementation requires: adding frequency band definitions, implementing band-wise masking, adding simple parameter updates in training loop.",
-        "Interestingness": 9,
-        "Feasibility": 9,
-        "Novelty": 9,
-        "novel": true
-    },
-    {
-        "Name": "progressive_importance_compression",
-        "Title": "Progressive Importance-Aware Data Compression for Efficient Deep Learning Training",
-        "Experiment": "Modify CompressedDataset to implement binary importance-based compression: (1) Track per-sample loss values during training epochs, (2) Create two DCT coefficient masks - high compression (8x8) and low compression (16x16), (3) At the start of each epoch, assign samples with above-median loss to low compression, others to high compression. Compare against fixed compression baseline using: (1) Final model accuracy, (2) Training convergence speed, (3) Average compression ratio achieved. Implementation requires adding loss tracking to training loop and modifying CompressedDataset to support two-level compression based on sample indices. Analyze how the proportion of samples in each compression level evolves during training.",
-        "Interestingness": 9,
-        "Feasibility": 9,
-        "Novelty": 9,
         "novel": true
     }
 ]
