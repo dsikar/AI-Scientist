@@ -8,25 +8,44 @@ ENV DEBIAN_FRONTEND=noninteractive
 WORKDIR /app
 
 # Install system dependencies including texlive-full
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    wget=1.21-1+deb11u1 \
-    git=1:2.30.2-1+deb11u2 \
-    build-essential=12.9 \
-    libssl-dev=1.1.1w-0+deb11u1 \
-    zlib1g-dev=1:1.2.11.dfsg-2+deb11u2 \
-    libbz2-dev=1.0.8-4 \
-    libreadline-dev=8.1-1 \
-    libsqlite3-dev=3.34.1-3 \
-    libncursesw5-dev=6.2+20201114-2+deb11u2 \
-    xz-utils=5.2.5-2.1~deb11u1 \
-    tk-dev=8.6.11+1 \
-    libxml2-dev=2.9.10+dfsg-6.7+deb11u4 \
-    libxmlsec1-dev=1.2.31-1 \
-    libffi-dev=3.3-6 \
-    liblzma-dev=5.2.5-2.1~deb11u1 \
-    texlive-full=2020.20210202-3 \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     wget=1.21-1+deb11u1 \
+#     git=1:2.30.2-1+deb11u2 \
+#     build-essential=12.9 \
+#     libssl-dev=1.1.1w-0+deb11u1 \
+#     zlib1g-dev=1:1.2.11.dfsg-2+deb11u2 \
+#     libbz2-dev=1.0.8-4 \
+#     libreadline-dev=8.1-1 \
+#     libsqlite3-dev=3.34.1-3 \
+#     libncursesw5-dev=6.2+20201114-2+deb11u2 \
+#     xz-utils=5.2.5-2.1~deb11u1 \
+#     tk-dev=8.6.11+1 \
+#     libxml2-dev=2.9.10+dfsg-6.7+deb11u4 \
+#     libxmlsec1-dev=1.2.31-1 \
+#     libffi-dev=3.3-6 \
+#     liblzma-dev=5.2.5-2.1~deb11u1 \
+#     texlive-full=2020.20210202-3 \
+#     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    wget \
+    git \
+    build-essential \
+    libssl-dev \
+    zlib1g-dev \
+    libbz2-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libncursesw5-dev \
+    xz-utils \
+    tk-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    libffi-dev \
+    liblzma-dev \
+    texlive-full \
+    && rm -rf /var/lib/apt/lists/*
+    
 # Upgrade pip
 RUN pip install --no-cache-dir --upgrade pip==24.2
 
